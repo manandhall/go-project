@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-project-deployment
+  labels:
+    type: go-project
+spec:
+  template:
+    metadata:
+      name: go-project-pod
+      labels:
+        type: go-project
+    spec:
+      containers:
+        - name: go-project-container
+          image: 778035945672.dkr.ecr.ap-south-1.amazonaws.com/conversation-service:docker-imagea42e1062dcf7521613237d7db7bd86426fd222ab
+          envFrom:
+            - secretRef:
+                name: env-file-go-project
+  replicas: 1
+  selector:
+    matchLabels:
+      type: go-project
