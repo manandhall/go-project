@@ -6,5 +6,5 @@ RUN go mod download
 RUN go mod tidy
 COPY . ./
 RUN go build -o main .
-EXPOSE 5000
+EXPOSE 8000
 CMD ["/app/main"]
